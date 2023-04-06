@@ -1,4 +1,5 @@
 import { SyntheticEvent, useState, useMemo } from 'react';
+import { Box } from '@chakra-ui/react';
 import { SearchResult, SelectedFilter } from '../../types';
 import { getSearchResults } from '../../util/api';
 import octocat from '../../../public/octocat.svg';
@@ -6,7 +7,7 @@ import octocat from '../../../public/octocat.svg';
 import { getFilteredResults, getLanguages, sorting } from '../../util/filters';
 import { SearchForm } from '../SearchForm/SearchForm';
 import { SearchFilters } from '../SearchFilters/SearchFilters';
-import { Card } from '../Card/Card';
+import ResultList from '../ResultList/ResultList';
 
 export function Search() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -64,34 +65,37 @@ export function Search() {
     [searchResults, selectedFilter]
   );
 
+  const displayContent = searchResults.count > 0 && !isLoading;
+
   return (
     <div>
-      <h1>
-        <div>
+      <Box display='flez' justifyContent='center' marginBottom={8}>
+        <h1>
           <img src={octocat} alt='Octocat icon' height={150} width={150} />
-        </div>
-        Github Repositories
-      </h1>
-      <SearchForm
-        searchTerm={searchTerm}
-        onSubmit={onSubmit}
-        onTermChange={onTermChange}
-      />
+        </h1>
+      </Box>
+      <Box marginBottom={4}>
+        <SearchForm
+          searchTerm={searchTerm}
+          onSubmit={onSubmit}
+          onTermChange={onTermChange}
+          isLoading={isLoading}
+        />
+      </Box>
+
       <div className='error'>{searchError}</div>
 
-      <SearchFilters
-        selectedFilter={selectedFilter}
-        onFilterChange={onFilterChange}
-        languages={languages}
-      />
-      {isLoading && <div>Loading...</div>}
-      {!isLoading && (
-        <ul>
-          {filteredSortedList.map((item, i) => (
-            <Card key={item.name + i} repo={item} />
-          ))}
-        </ul>
-      )}
+      <Box marginBottom={10}>
+        <SearchFilters
+          selectedFilter={selectedFilter}
+          onFilterChange={onFilterChange}
+          languages={languages}
+          show={displayContent}
+        />
+      </Box>
+      <Box marginBottom={10}>
+        <ResultList list={filteredSortedList} show={displayContent} />
+      </Box>
     </div>
   );
 }
