@@ -2,6 +2,7 @@
   "name": "github-repo-search",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://tiagosatur.github.io/github-repo-search/",
   "type": "module",
   "scripts": {
     "dev": "vite",
