@@ -74,7 +74,7 @@ export function Search() {
           <img src={octocat} alt='Octocat icon' height={150} width={150} />
         </h1>
       </Box>
-      <Box marginBottom={4}>
+      <Box marginBottom={4} minWidth={472}>
         <SearchForm
           searchTerm={searchTerm}
           onSubmit={onSubmit}
@@ -83,7 +83,7 @@ export function Search() {
         />
       </Box>
 
-      <div className='error'>{searchError}</div>
+      {searchError && <div className='error'>{searchError}</div>}
 
       <Box marginBottom={10}>
         <SearchFilters
@@ -93,6 +93,11 @@ export function Search() {
           show={displayContent}
         />
       </Box>
+      {displayContent && (
+        <Box marginBottom={10} textAlign='left' color='gray.600'>
+          We found {searchResults.count} results
+        </Box>
+      )}
       <Box marginBottom={10}>
         <ResultList list={filteredSortedList} show={displayContent} />
       </Box>
