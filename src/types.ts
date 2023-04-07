@@ -7,6 +7,7 @@ export interface SearchResult {
   name: string;
   description: string;
   updated_at: string;
+  html_url: string;
 }
 
 export interface SelectedFilter {
