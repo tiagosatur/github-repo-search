@@ -27,8 +27,9 @@ export const SearchFilters = ({
         onChange={onFilterChange}
         variant='filled'
         marginRight={4}
+        flexGrow={1}
       >
-        <option value='None'>Programming language</option>
+        <option value='None'>Language</option>
         {languages.map((lang, i) => (
           <option value={lang} key={lang + i}>
             {lang}
@@ -41,6 +42,7 @@ export const SearchFilters = ({
         name='general'
         onChange={onFilterChange}
         variant='filled'
+        flexGrow={1}
       >
         {Object.values(sorting).map((item) => {
           return (

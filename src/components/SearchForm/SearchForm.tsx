@@ -16,13 +16,14 @@ export const SearchForm = ({
 }: SearchFormProps) => {
   return (
     <form onSubmit={onSubmit} className='search-form'>
-      <Flex>
+      <Flex w='100%'>
         <Input
           type='text'
           value={searchTerm}
           onChange={onTermChange}
           marginRight={2}
           placeholder='Find Github Repositories'
+          flexGrow={1}
         />
         <Button
           type='submit'

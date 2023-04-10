@@ -74,7 +74,7 @@ export function Search() {
           <img src={octocat} alt='Octocat icon' height={150} width={150} />
         </h1>
       </Box>
-      <Box marginBottom={4} minWidth={472}>
+      <Box marginBottom={4} minWidth='100%'>
         <SearchForm
           searchTerm={searchTerm}
           onSubmit={onSubmit}

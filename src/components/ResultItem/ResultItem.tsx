@@ -9,12 +9,15 @@ interface ResultItemProps {
 export const ResultItem = ({ repo }: ResultItemProps) => {
   return (
     <Tr>
-      <Td>
+      <Td maxWidth={['150px', 'unset']} overflow={['hidden', 'auto']}>
         <Link
           href={repo.html_url}
           target='_blank'
           display='block'
           title='Visit repository'
+          sx={{
+            wordWrap: 'normal',
+          }}
         >
           {repo.name}
         </Link>

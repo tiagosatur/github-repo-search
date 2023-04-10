@@ -15,7 +15,7 @@ export const ResultList = ({ list, show }: SearchFiltersProps) => {
       <Table variant='simple'>
         <Thead>
           <Tr>
-            <Th>Name</Th>
+            <Th maxWidth='50px'>Name</Th>
             <Th>Last Update</Th>
             <Th>Stars</Th>
           </Tr>
